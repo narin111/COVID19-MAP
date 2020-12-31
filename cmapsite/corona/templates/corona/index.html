@@ -4,12 +4,29 @@
 <head>
    <meta charset="utf-8">
    <title>코로나맵</title>
+   <link rel="stylesheet" href="mapstyle.css"> 
 </head>
 <body>
    <div id="map" style="width:100%;height:100vh;"></div>
-
+    
    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b7b96572f74449457d03127a926f0bd8&libraries=clusterer"></script>
    <script>
+       var healthCenter = [ 
+        new kakao.maps.LatLng(35.81579098110627, 127.14317379788938),
+        new kakao.maps.LatLng(35.978462970297166, 126.72157312261947),
+        new kakao.maps.LatLng(35.96122411413994, 126.96630885185414),
+        new kakao.maps.LatLng(35.57826259623523, 126.85471369788279),
+        new kakao.maps.LatLng(35.39792963110389, 127.36370578438748),
+        new kakao.maps.LatLng(35.80101161859347, 126.88337447090868),
+        new kakao.maps.LatLng(35.92143800319691, 127.09255953836285),
+        new kakao.maps.LatLng(35.79567510491254, 127.43387338254236),  
+        new kakao.maps.LatLng(36.00615143371527, 127.67174128440458),  
+        new kakao.maps.LatLng(35.65457650183054, 127.51980272103197),
+        new kakao.maps.LatLng(35.61297366918293, 127.28726092486394), 
+        new kakao.maps.LatLng(35.367075657228035, 127.14055601322336), 
+        new kakao.maps.LatLng(35.44402978728154, 126.68327909070189), 
+        new kakao.maps.LatLng(35.723050373993786, 126.73586738254023)                
+        ];
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
           mapOption = {
               center: new kakao.maps.LatLng(35.845433, 127.124200), // 지도의 중심좌표 전주
@@ -57,8 +74,8 @@
                 content : iwContent 
             });
 
-            ////마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-            //////infowindow.open(map, marker);
+            //---마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+            //---infowindow.open(map, marker);
 
             ////클러스터러에 사용할 정보 저장
             markers.push(marker);
