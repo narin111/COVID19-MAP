@@ -7,7 +7,7 @@ soup=BeautifulSoup(html, 'html.parser')
 
 table=soup.find('table', {'class':'covid_table'})
 trs = table.find_all('tr')
-data = []
+data = [] #[도시, 군구, 상점이름....데이터]
 for idx, tr in enumerate(trs):
     if (idx) > 0:
         tds=tr.find_all('td')
