@@ -67,11 +67,10 @@
 </header>
 <p></p>
 
-
-<section>
 <!-- 섹션(표 부분(중간)) -->
-<table border="1">
+<section>
 
+<table border="1">
 <thread >
     <tr>
         <th>번호</th>
@@ -85,6 +84,12 @@
         <th>관련 확진자 번호</th>
     </tr>
 </thread>
+<tbody>
+    {% for route_table in route_table %}
+    <tr>
+        <th>{{route_table[0]}}</th>
+    </tr>
+</tbody>
 </table>
 
 <!-- 표 페이지 넘기는것도 여기다 해야할것 같은데 이건 데이터 끌어오고 나서 해야할듯. 그래야 넘어갈게있 -->
