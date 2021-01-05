@@ -1,31 +1,338 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>코로나맵</title>
-    <link rel="stylesheet" href="mapstyle.css">
+    <style>
+        .map_wrap,
+        .map_wrap * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+            font-size: 12px;
+        }
+
+        .map_wrap {
+            position: relative;
+            width: 100%;
+            height: 350px;
+        }
+
+        #category {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0);
+            background: rgba(255, 255, 255, 0);
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        #category li {
+            float: left;
+            list-style: none;
+            width: 50px;
+
+
+            padding: 6px 0;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #category li.on {
+            background: #eee;
+        }
+
+        #category li:hover {
+            background: #ffe6e6;
+            border-left: 1px solid #acacac;
+            margin-left: -1px;
+        }
+
+        #category li:last-child {
+            margin-right: 0;
+            border-right: 0;
+        }
+
+        #category li span {
+            display: block;
+            margin: 0 auto 3px;
+            width: 27px;
+            height: 28px;
+        }
+
+        #category li .category_bg {
+            background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png) no-repeat;
+        }
+
+        
+
+        .placeinfo_wrap {
+            position: absolute;
+            bottom: 28px;
+            left: -150px;
+            width: 300px;
+        }
+
+        .placeinfo {
+            position: relative;
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            background: #fff;
+        }
+
+        .placeinfo:nth-of-type(n) {
+            border: 0;
+            box-shadow: 0px 1px 2px #888;
+        }
+
+        .placeinfo_wrap .after {
+            content: '';
+            position: relative;
+            margin-left: -12px;
+            left: 50%;
+            width: 22px;
+            height: 12px;
+            background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+        }
+
+        .placeinfo a,
+        .placeinfo a:hover,
+        .placeinfo a:active {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .placeinfo a,
+        .placeinfo span {
+            display: block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .placeinfo span {
+            margin: 5px 5px 0 5px;
+            cursor: default;
+            font-size: 13px;
+        }
+
+        .placeinfo .title {
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 6px 6px 0 0;
+            margin: -1px -1px 0 -1px;
+            padding: 10px;
+            color: #fff;
+            background: #d95050;
+            background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+        }
+
+        .placeinfo .tel {
+            color: #0f7833;
+        }
+
+        .placeinfo .jibun {
+            color: #999;
+            font-size: 11px;
+            margin-top: 0;
+        }
+
+        #button1 {
+            margin-right: 0px;
+        }
+
+        #btn_group button {
+            border: 1px solid purple;
+            background-color: purple;
+            color: rgb(248, 246, 248);
+            padding: 5px;
+            margin: 0px;
+            width: 50px;
+            height: 50px;
+        }
+
+        #btn_group button:hover {
+            background-color: white;
+            color: purple;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="map" style="width:100%;height:100vh;"></div>
+    <link rel="stylesheet" href="mapstyle.css">
     <p style="margin-top:-12px">
         <em class="link">
-            <a href="/web/documentation/#CategoryCode" target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
+            <a href="/web/documentation/#CategoryCode" target="_blank"></a>
         </em>
     </p>
-    <div class="map_wrap">
-        <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+    <!-- <div class="map_wrap">
+        <div id="map" style="width:100%;height:100vh;"></div>
         <ul id="category">
+            <li id="BK9" data-order="0">
+                <span class="category_bg bank"></span>
+                고창군
+            </li>
+            <li id="MT1" data-order="1">
+                <span class="category_bg mart"></span>
+                군산시
+            </li>
             <li id="PM9" data-order="2">
                 <span class="category_bg pharmacy"></span>
-                보건소
+                김제시
+            </li>
+            <li id="OL7" data-order="3">
+                <span class="category_bg oil"></span>
+                남원시
+            </li>
+            <li id="CE7" data-order="4">
+                <span class="category_bg cafe"></span>
+                무주군
+            </li>
+            <li id="CS2" data-order="5">
+                <span class="category_bg store"></span>
+                부안군
+            </li>
+            <li id="CS2" data-order="6">
+                <span class="category_bg store"></span>
+                순창군
+            </li>
+            <li id="CS2" data-order="7">
+                <span class="category_bg store"></span>
+                완주군
+            </li>
+            <li id="CS2" data-order="8">
+                <span class="category_bg store"></span>
+                익산시
+            </li>
+            <li id="CS2" data-order="9">
+                <span class="category_bg store"></span>
+                임실군
+            </li>
+            <li id="CS2" data-order="10">
+                <span class="category_bg store"></span>
+                전주시 덕진구
+            </li>
+            <li id="CS2" data-order="11">
+                <span class="category_bg store"></span>
+                전주시 완산구
+            </li>
+            <li id="CS2" data-order="12">
+                <span class="category_bg store"></span>
+                정읍시
+            </li>
+            <li id="CS2" data-order="13">
+                <span class="category_bg store"></span>
+                진안군
             </li>
         </ul>
+        
+    </div> -->
+
+    <div class="map_wrap">
+        <div id="map" style="width:100%;height:100vh;"></div>
+        <ul id="category">
+            <div id="btn_group">
+                <li><button id="button1" onclick="areabutton('고창')">고창군</button> </li>
+                <li><button id="button1" onclick="areabutton('군산')">군산시</button></li>
+                <li><button id="button1" onclick="areabutton('김제')">김제시</button></li>
+                <li><button id="button1" onclick="areabutton('남원')">남원시</button></li>
+                <li><button id="button1" onclick="areabutton('무주')">무주군</button></li>
+                <li><button id="button1" onclick="areabutton('부안')">부안군</button></li>
+                <li><button id="button1" onclick="areabutton('순창')">순창군</button></li>
+                <li><button id="button1" onclick="areabutton('완주')">완주군</button></li>
+                <li><button id="button1" onclick="areabutton('익산')">익산시</button></li>
+                <li><button id="button1" onclick="areabutton('임실')">임실군</button></li>
+                <li><button id="button1" onclick="areabutton('덕진')">전주시 덕진구</button></li>
+                <li><button id="button1" onclick="areabutton('완산')">전주시 완산구</button></li>
+                <li><button id="button1" onclick="areabutton('정읍')">정읍시</button></li>
+                <li><button id="button1" onclick="areabutton('진안')">진안군</button></li>
+                <script>
+                    function areabutton(s) {
+                        var gc = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            gs = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            kj = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            no = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            mj = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            ba = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            sc = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            wj = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            is = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            ims = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            dj = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            ws = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            je = new kakao.maps.LatLng(33.3590628, 126.534361),
+                            ja = new kakao.maps.LatLng(33.3590628, 126.534361);
+
+                        alert(s + "버튼을 누르셨습니다.");
+                        if (s == "고창") {
+                            map.setCenter(gc);
+                        } else if (s == "군산") {
+                            map.setCenter(gs);
+                        } else if (s == "김제") {
+                            map.setCenter(kj);
+                        } else if (s == "남원") {
+                            map.setCenter(no);
+                        } else if (s == "무주") {
+                            map.setCenter(mj);
+                        } else if (s == "부안") {
+                            map.setCenter(ba);
+                        } else if (s == "순창") {
+                            map.setCenter(sc);
+                        } else if (s == "완주") {
+                            map.setCenter(wj);
+                        } else if (s == "익산") {
+                            map.setCenter(is);
+                        } else if (s == "임실") {
+                            map.setCenter(ims);
+                        } else if (s == "덕진") {
+                            map.setCenter(dj);
+                        } else if (s == "완산") {
+                            map.setCenter(ws);
+                        } else if (s == "정읍") {
+                            map.setCenter(je);
+                        } else { //진안
+                            map.setCenter(ja);
+                        }
+                    }
+                </script>
+            </div>
+        </ul>
+
     </div>
+    <!-- <div class="map_wrap">
+        <div id="map" style="width:100%;height:100vh;"></div>
+        <div id="btn_group">
+            <button id="button1">고창군</button>
+            <button id="button1">군산시</button>
+            <button id="button1">김제시</button>
+            <button id="button1">남원시</button>
+            <button id="button1">무주시</button>
+            <button id="button1">부안군</button>
+            <button id="button1">순창군</button>
+            <button id="button1">완주군</button>
+            <button id="button1">익산시</button>
+            <button id="button1">임실군</button>
+            <button id="button1">전주시 덕진구</button>
+            <button id="button1">전주시 완산구</button>
+            <button id="button1">정읍시</button>
+            <button id="button1">진안군</button>
+        </div>
+
+    </div> -->
+
     <script
         src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b7b96572f74449457d03127a926f0bd8&libraries=clusterer"></script>
     <script>
+
+
         var healthCenter = [
             new kakao.maps.LatLng(35.81579098110627, 127.14317379788938),
             new kakao.maps.LatLng(35.978462970297166, 126.72157312261947),
@@ -59,42 +366,83 @@
         // 지도를 생성한다 
         var map = new kakao.maps.Map(mapContainer, mapOption);
 
-        
+
+        // 커스텀 오버레이의 컨텐츠 노드에 css class를 추가합니다 
+        contentNode.className = 'placeinfo_wrap';
+
+        // 커스텀 오버레이의 컨텐츠 노드에 mousedown, touchstart 이벤트가 발생했을때
+        // 지도 객체에 이벤트가 전달되지 않도록 이벤트 핸들러로 kakao.maps.event.preventMap 메소드를 등록합니다 
+        addEventHandle(contentNode, 'mousedown', kakao.maps.event.preventMap);
+        addEventHandle(contentNode, 'touchstart', kakao.maps.event.preventMap);
 
 
-        // ///// 지역별 주소-좌표(마커) 변환 /////
-        // // 주소-좌표 변환 객체를 생성합니다
-        // var geocoder = new kakao.maps.services.Geocoder();
-        
-
-        // ////함수로 구현 하기////
-        // // 주소로 좌표를 검색합니다
-        // geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function (result, status) {
-
-        //     // 정상적으로 검색이 완료됐으면 
-        //     if (status === kakao.maps.services.Status.OK) {
-
-        //         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-        //         // 결과값으로 받은 위치를 마커로 표시합니다
-        //         var marker = new kakao.maps.Marker({
-        //             map: map,
-        //             position: coords
-        //         });
-
-        //         // 인포윈도우로 장소에 대한 설명을 표시합니다
-        //         // 장소 설명에 확진자 번호 넣기?
-        //         var infowindow = new kakao.maps.InfoWindow({
-        //             content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-        //         });
-        //         infowindow.open(map, marker);
-
-        //         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        //         map.setCenter(coords);
-        //     }
-        // });
 
 
+
+        // 커스텀 오버레이 컨텐츠를 설정합니다
+        placeOverlay.setContent(contentNode);
+
+        // 각 카테고리에 클릭 이벤트를 등록합니다
+        addCategoryClickEvent();
+
+        // 엘리먼트에 이벤트 핸들러를 등록하는 함수입니다
+        function addEventHandle(target, type, callback) {
+            if (target.addEventListener) {
+                target.addEventListener(type, callback);
+            } else {
+                target.attachEvent('on' + type, callback);
+            }
+        }
+
+
+
+        // 커스텀 오버레이를 숨깁니다 
+        placeOverlay.setMap(null);
+
+
+        // 각 카테고리에 클릭 이벤트를 등록합니다
+        function addCategoryClickEvent() {
+            var category = document.getElementById('category'),
+                children = category.children;
+
+            for (var i = 0; i < children.length; i++) {
+                children[i].onclick = onClickCategory;
+            }
+        }
+
+        // 카테고리를 클릭했을 때 호출되는 함수입니다
+        function onClickCategory() {
+            var id = this.id,
+                className = this.className;
+
+            placeOverlay.setMap(null);
+
+            if (className === 'on') {
+                currCategory = '';
+                //changeCategoryClass();
+                //여기다가 중심좌표 옮기는 함수
+                removeMarker();
+            } else {
+                currCategory = id;
+                changeCategoryClass(this);
+                searchPlaces();
+            }
+        }
+
+        // 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
+        function changeCategoryClass(el) {
+            var category = document.getElementById('category'),
+                children = category.children,
+                i;
+
+            for (i = 0; i < children.length; i++) {
+                children[i].className = '';
+            }
+
+            if (el) {
+                el.className = 'on';
+            }
+        }
 
 
 
@@ -152,6 +500,8 @@
 
 
 
+
+
         // 지도 타입 변경 컨트롤을 생성한다
         var mapTypeControl = new kakao.maps.MapTypeControl();
 
@@ -180,7 +530,6 @@
                 infowindow.close();
             };
         }
-
 
 
 
