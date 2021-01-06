@@ -147,6 +147,17 @@
 
         #button1 {
             margin-right: 0px;
+            
+        }
+
+        #buttonone {
+            margin-right: 0px;
+            border-radius: 15px 0px 0px 15px;
+        }
+
+        #buttonlast {
+            margin-right: 0px;
+            border-radius: 0px 15px 15px 0px;
         }
 
         #btn_group button {
@@ -173,74 +184,13 @@
             <a href="/web/documentation/#CategoryCode" target="_blank"></a>
         </em>
     </p>
-    <!-- <div class="map_wrap">
-        <div id="map" style="width:100%;height:100vh;"></div>
-        <ul id="category">
-            <li id="BK9" data-order="0">
-                <span class="category_bg bank"></span>
-                고창군
-            </li>
-            <li id="MT1" data-order="1">
-                <span class="category_bg mart"></span>
-                군산시
-            </li>
-            <li id="PM9" data-order="2">
-                <span class="category_bg pharmacy"></span>
-                김제시
-            </li>
-            <li id="OL7" data-order="3">
-                <span class="category_bg oil"></span>
-                남원시
-            </li>
-            <li id="CE7" data-order="4">
-                <span class="category_bg cafe"></span>
-                무주군
-            </li>
-            <li id="CS2" data-order="5">
-                <span class="category_bg store"></span>
-                부안군
-            </li>
-            <li id="CS2" data-order="6">
-                <span class="category_bg store"></span>
-                순창군
-            </li>
-            <li id="CS2" data-order="7">
-                <span class="category_bg store"></span>
-                완주군
-            </li>
-            <li id="CS2" data-order="8">
-                <span class="category_bg store"></span>
-                익산시
-            </li>
-            <li id="CS2" data-order="9">
-                <span class="category_bg store"></span>
-                임실군
-            </li>
-            <li id="CS2" data-order="10">
-                <span class="category_bg store"></span>
-                전주시 덕진구
-            </li>
-            <li id="CS2" data-order="11">
-                <span class="category_bg store"></span>
-                전주시 완산구
-            </li>
-            <li id="CS2" data-order="12">
-                <span class="category_bg store"></span>
-                정읍시
-            </li>
-            <li id="CS2" data-order="13">
-                <span class="category_bg store"></span>
-                진안군
-            </li>
-        </ul>
-        
-    </div> -->
+    
 
     <div class="map_wrap">
         <div id="map" style="width:100%;height:100vh;"></div>
         <ul id="category">
             <div id="btn_group">
-                <li><button id="button1" onclick="areabutton('고창')">고창군</button> </li>
+                <li><button id="buttonone" onclick="areabutton('고창')">고창군</button> </li>
                 <li><button id="button1" onclick="areabutton('군산')">군산시</button></li>
                 <li><button id="button1" onclick="areabutton('김제')">김제시</button></li>
                 <li><button id="button1" onclick="areabutton('남원')">남원시</button></li>
@@ -253,7 +203,7 @@
                 <li><button id="button1" onclick="areabutton('덕진')">전주시 덕진구</button></li>
                 <li><button id="button1" onclick="areabutton('완산')">전주시 완산구</button></li>
                 <li><button id="button1" onclick="areabutton('정읍')">정읍시</button></li>
-                <li><button id="button1" onclick="areabutton('진안')">진안군</button></li>
+                <li><button id="buttonlast" onclick="areabutton('진안')">진안군</button></li>
                 <script>
                     function areabutton(s) {
                         var gc = new kakao.maps.LatLng(35.435679510737884, 126.70184511009032),
@@ -271,7 +221,7 @@
                             je = new kakao.maps.LatLng(35.57021941060722, 126.85508060660761),
                             ja = new kakao.maps.LatLng(35.79206653171798, 127.42423650465578);
 
-                        alert(s + "버튼을 누르셨습니다.");
+                        
                         if (s == "고창") {
                             map.setCenter(gc);
                             map.setLevel(map.getLevel() -3);
