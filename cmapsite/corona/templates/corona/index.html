@@ -440,30 +440,68 @@
         }
 
 
+
         // 마커 클러스터러를 생성합니다 
         var clusterer = new kakao.maps.MarkerClusterer({
             map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
             averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-            minLevel: 8 // 클러스터 할 최소 지도 레벨 
+            minLevel: 12 // 클러스터 할 최소 지도 레벨 
         });
+        
+        var imageSrc = 'https://www.flaticon.com/svg/static/icons/svg/3448/3448513.svg', // 마커이미지의 주소입니다    
+            imageSize = new kakao.maps.Size(40, 43), // 마커이미지의 크기입니다
+            imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+            
+        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
 
         // for을 이용한 다양한 처리
         var markers = [];
         var markerlist = [
-            [35.82932703609675, 127.1339129382811, '<div style="padding:5px;">전주시보건소 덕진진료실</div>'],
-            [35.92124224893016, 127.09266618560707, '<div style="padding:5px;">완주군보건소</div>'],
-            [35.96166891007563, 126.96650562105486, '<div style="padding:5px;">익산시보건소</div>'],
+            [35.44371032014076, 126.68323261521034, '<div style="padding:5px;">고창군보건소</div>'],
+            [35.43638513204618, 126.69358748591249, '<div style="padding:5px;">고창병원</div>'],
+            [35.964664523538815, 126.72023417350542, '<div style="padding:5px;">군산시보건소</div>'],
+            [35.95491150643398, 126.71203049412433, '<div style="padding:5px;">군산의료원</div>'],
+            [35.977373782299736, 126.73712152204764, '<div style="padding:5px;">동군산병원</div>'],
+            [35.80075362964829, 126.88329597852517, '<div style="padding:5px;">김제시보건소</div>'],
+            [35.397657417503304, 127.3643789220484, '<div style="padding:5px;">남원시보건소</div>'],
+            [35.43192150955313, 127.40712507602127, '<div style="padding:5px;">남원의료원</div>'],
+            [35.72277298978219, 126.73562920855177, '<div style="padding:5px;">부안군보건소</div>'],
+            [35.72485441999975, 126.73451665576188, '<div style="padding:5px;">부안성모병원</div>'],
 
+            [35.921194746104995, 127.09263464226669, '<div style="padding:5px;">완주군보건소</div>'],
+            [35.961751408293125, 126.96650302693692, '<div style="padding:5px;">익산시보건소</div>'],
+            [35.96439228612681, 126.9597828459715, '<div style="padding:5px;">원광대학교병원</div>'],
+            [35.96161424074285, 126.96653940893353, '<div style="padding:5px;">익산병원</div>'],
+            [35.84601581789065, 127.15338464501892, '<div style="padding:5px;">대자인병원</div>'],
+            [35.81507224556988, 127.12480313875973, '<div style="padding:5px;">전주병원</div>'],
+            [35.865388362941104, 127.14789968348255, '<div style="padding:5px;">호성전주병원</div>'],
+            [35.81420290021215, 127.13326478459524, '<div style="padding:5px;">예수병원</div>'],
+            [35.829378816689974, 127.13387895677496, '<div style="padding:5px;">덕진선별진료소</div>'],
+            [35.82140069015686, 127.12423478289354, '<div style="padding:5px;">화산선별진료소</div>'],
+
+            [35.578140452019035, 126.85473515761328, '<div style="padding:5px;">정읍시보건소</div>'],
+            [35.588910025503054, 126.82397088644974, '<div style="padding:5px;">정읍아산병원</div>'],
+            [35.7955619954873, 127.43394848645866, '<div style="padding:5px;">진안군보건소</div>'],
+            [35.79481191280103, 127.43220172635483, '<div style="padding:5px;">진안군의료원</div>'],
+            [36.00585014617381, 127.67177874544035, '<div style="padding:5px;">무주군보건의료원</div>'],
+            [35.36656478173313, 127.14378352669924, '<div style="padding:5px;">순창군보건의료원</div>'],
+            [35.61247808906452, 127.28704205760133, '<div style="padding:5px;">임실군보건의료원</div>'],
+            [35.65458202041234, 127.51968433855932, '<div style="padding:5px;">장수군보건의료원</div>'],
         ]
-
+        
+        
         for (var i = 0; i < markerlist.length; i++) {
             //마커 표시하기
             // 마커가 표시될 위치입니다 
             var markerPosition = new kakao.maps.LatLng(markerlist[i][0], markerlist[i][1]);
 
+
             // 마커를 생성합니다
             var marker = new kakao.maps.Marker({
-                position: markerPosition
+                position: markerPosition, 
+                image: markerImage // 마커이미지 설정 
             });
 
             // 마커가 지도 위에 표시되도록 설정합니다
