@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corona.apps.CoronaConfig',
-    'cTable.apps.CtableConfig',
+   
 ]
 
 MIDDLEWARE = [
