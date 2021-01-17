@@ -4,5 +4,6 @@ from django.conf.urls import url
 
 
 urlpatterns = [
-    url(r'^$', views.index),
+    path("", views.index, name="index"),
+    path("chart/", views.chart, name="chart"),
 ]
