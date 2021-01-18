@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
-            font-size: 12px;
+            /* font-size: 12px; */
         }
 
         .map_wrap {
@@ -28,7 +28,7 @@
             border: 1px solid rgba(255, 255, 255, 0);
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0);
             background: rgba(255, 255, 255, 0);
-            overflow: hidden;
+            /* overflow: hidden; */
             z-index: 2;
         }
 
@@ -71,22 +71,6 @@
 
         
 
-        .placeinfo_wrap {
-            position: absolute;
-            bottom: 28px;
-            left: -150px;
-            width: 300px;
-        }
-
-        .placeinfo {
-            position: relative;
-            width: 100%;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
-            background: #fff;
-        }
 
         .placeinfo:nth-of-type(n) {
             border: 0;
@@ -135,30 +119,27 @@
             background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
         }
 
-        .placeinfo .tel {
-            color: #0f7833;
-        }
-
-        .placeinfo .jibun {
-            color: #999;
-            font-size: 11px;
-            margin-top: 0;
-        }
 
         #button1 {
             margin-right: 0px;
+            width: 50px;
+            font-size: 12px;
             
         }
 
         #buttonone {
             margin-right: 0px;
             border-radius: 15px 0px 0px 15px;
+            width: 50px;
+            font-size: 12px;
         }
 
         #buttonlast {
             margin-right: 0px;
             border-radius: 0px 15px 15px 0px;
-            width: 150px;
+            width: 160px;
+            font-size: 15px;
+            text-decoration: underline;
         }
 
         #btn_group button {
@@ -167,7 +148,7 @@
             color: rgb(248, 246, 248);
             padding: 5px;
             margin: 0px;
-            width: 50px;
+            /* width: 50px; */
             height: 50px;
         }
 
@@ -211,7 +192,7 @@
                 <li><button id="button1" onclick="areabutton('완산')">전주시 완산구</button></li>
                 <li><button id="button1" onclick="areabutton('정읍')">정읍시</button></li>
                 <li><button id="button1" onclick="areabutton('진안')">진안군</button></li>
-                <li><button id="buttonlast" onclick="location.href='{% url 'chart' %}'">표로 보기</button></li>
+                <li><button id="buttonlast" onclick="location.href='{% url 'chart' %}'">현황 표로 보기</button></li>
                 
                 <script>
                     function areabutton(s) {
