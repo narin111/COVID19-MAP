@@ -15,6 +15,11 @@ def chart(request):
     }
     return render(request, 'corona/chart.html', context=context)
 
+def hospital_chart(request):
+    context={
+
+    }
+    return render(request, 'corona/hospital_chart.html', context=context)
 
 def route_table(request):
     route_Table = route_table()
