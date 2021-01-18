@@ -48,7 +48,7 @@
         }
 
         #category li:hover {
-            background: #ffe6e6;
+            background: rgba(255, 254, 255, 0);
             border-left: 1px solid #acacac;
             margin-left: -1px;
         }
@@ -158,6 +158,7 @@
         #buttonlast {
             margin-right: 0px;
             border-radius: 0px 15px 15px 0px;
+            width: 150px;
         }
 
         #btn_group button {
@@ -177,9 +178,12 @@
     </style>
 </head>
 
-<h1>
+
+<!-- <h1>
     <a href="{% url 'chart' %}">표 보기 </a>
-</h1>
+</h1> -->
+
+
 <body>
     <link rel="stylesheet" href="mapstyle.css">
     <p style="margin-top:-12px">
@@ -206,7 +210,9 @@
                 <li><button id="button1" onclick="areabutton('덕진')">전주시 덕진구</button></li>
                 <li><button id="button1" onclick="areabutton('완산')">전주시 완산구</button></li>
                 <li><button id="button1" onclick="areabutton('정읍')">정읍시</button></li>
-                <li><button id="buttonlast" onclick="areabutton('진안')">진안군</button></li>
+                <li><button id="button1" onclick="areabutton('진안')">진안군</button></li>
+                <li><button id="buttonlast" onclick="location.href='{% url 'chart' %}'">표로 보기</button></li>
+                
                 <script>
                     function areabutton(s) {
                         var gc = new kakao.maps.LatLng(35.435679510737884, 126.70184511009032),
