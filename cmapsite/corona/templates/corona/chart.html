@@ -75,22 +75,25 @@
 <table border="1">
 <thread >
     <tr>
-        <th>번호</th>
-        <th>노출일시</th>
-        <th>구</th>
+        <th>시도</th>
+        <th>시군구</th>
         <th>상호명</th>
         <th>주소</th>  
+        <th>노출일시</th>
         <th>소독여부</th>
-        <th>방역일</th>
-        <th>마스크착용</th>
-        <th>관련 확진자 번호</th>
     </tr>
 </thread>
 <tbody>
-    ㅎㅎㅎ
-    <tr>
-        <th></th>
-    </tr>
+    {% for data in data %}
+        <tr>
+            <th>{{data.0}}</th>
+            <th>{{data.1}}</th>
+            <th>{{data.2}}</th>
+            <th>{{data.3}}</th>
+            <th>{{data.4}}</th>
+            <th>{{data.5}}</th>
+        </tr>
+    {% endfor %}
 </tbody>
 </table>
 
