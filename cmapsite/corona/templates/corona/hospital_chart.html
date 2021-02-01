@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style tyle="text/css">
+    a {text-decoration:none}
     html,
      body {
          height: 100%;
@@ -36,12 +37,9 @@
   </style>
 
     
-    <title>COVID19-cTable</title>
+    <title>코로나맵</title>
 </head>    
 
-<h2>
-    <a href="{% url 'index' %}"> 지도 보기</a>
-</h2>
 
 <body>
     <!-- 헤더 (맨위) 아직 클릭시 넘어가는거 안함-->
@@ -52,9 +50,9 @@
 <br><br>
 
     <div style="position: abolute; left: 0px;">
-  <a href="{% url 'chart' %}">확진자 이동경로&nbsp&nbsp&nbsp&nbsp </a>
-  <a> <b><u>보건소</u></b> </a>
-      
+  <a href="{% url 'chart' %}">&nbsp&nbsp확진자 이동경로&nbsp&nbsp&nbsp&nbsp </a>
+  <a> <b>보건소</b>&nbsp&nbsp&nbsp&nbsp </a>
+  <a href="{% url 'index' %}"> 지도 보기</a>
     </div>
 
 </header>
@@ -236,13 +234,13 @@
 
 <footer style="background-color: rgb(111, 114, 121);">
     <div class="tel-num", style="color:black;">
-       * 참고:전북도청 - 전라북도청 <br>
-       (54968) 전라북도 전주시 완산구 효자로 225 &nbsp&nbsp  ☎대표전화:<strong>063-280-2114</strong>
+        <p></p>
+        &nbsp * 참고:전북도청 - 전라북도청 <br>
+        &nbsp (54968) 전라북도 전주시 완산구 효자로 225 &nbsp&nbsp  ☎대표전화:<strong>063-280-2114</strong>
     </div>
 
     <div align="right">
-        팀 이름?
-    </div>
+        COVIED-19
 </footer>
 
 
