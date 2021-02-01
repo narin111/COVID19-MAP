@@ -12,22 +12,27 @@
     body {
          display: flex;
           flex-direction: column;
+          fontsize: 14px;
        }
 
     section {
           flex: 1;
     }
     table {
-        width:80%;
+        width:90%;
         border-collapse: collapse;
+        margin: auto;
+        margin-bottom: 15px;
     }
-    th{
-        border-left: 1px solid black;
-        
-        border-bottom: 1px solid black;
-
-        background-color: rgb(220, 236, 253);
-    }
+    table td,
+        table th {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid lightgray;
+        }
+        table th{
+            background-color: rgb(220, 236, 253);
+        }
 
   </style>
 
@@ -40,31 +45,17 @@
 </h2>
 
 <body>
-    <!-- 헤더 (맨위) 아직 클릭시 넘어가는거 안함-->
     <header> 
     <div align="center" style="height:100px; margin-top: 100px;">
     <h1><strong>전북 코로나 상황</strong></h1>
     </div>
 <br><br>
 
-    <div style="position: abolute; left: 0px;">
+<!-- table 위의 버튼 -->
+<div style="position: abolute; left: 0px;">
   <a><b><u>확진자 이동경로</u></b>&nbsp&nbsp&nbsp&nbsp </a>
-    <!-- 현재는 확진자 이동경로 표 보여주는 창이라 생각하고 강조 -->
   <a href="{% url 'hospital_chart' %}"> 보건소 </a>
-      
-        
-
-  <select style="position: absolute; right:0px; float:left; height: 30px; margin-right: 5px;">
-    <option value="" selected="">전체</option>
-    <option value="전주" >전주</option>
-    <option value="익산" >익산</option>
-    <option value="군산" >군산</option>
-    <option value="무안" >무안</option>
-    <option value="전주 외..." >전북지역</option>
-</select>
-
-
-    </div>
+</div>
 
 </header>
 <p></p>
@@ -75,29 +66,28 @@
 <table border="1">
 <thread >
     <tr>
-        <th>시도</th>
-        <th>시군구</th>
-        <th>상호명</th>
-        <th>주소</th>  
-        <th>노출일시</th>
-        <th>소독여부</th>
+        <td bgcolor="efefef"><b>시도</b></td>
+        <td bgcolor="efefef"><b>시군구</b></td>
+        <td bgcolor="efefef"><b>상호명</b></td>
+        <td bgcolor="efefef"><b>주소</b></td>  
+        <td bgcolor="efefef"><b>노출일시</b></td>
+        <td bgcolor="efefef"><b>소독여부</b></td>
     </tr>
 </thread>
 <tbody>
     {% for data in data %}
         <tr>
-            <th>{{data.0}}</th>
-            <th>{{data.1}}</th>
-            <th>{{data.2}}</th>
-            <th>{{data.3}}</th>
-            <th>{{data.4}}</th>
-            <th>{{data.5}}</th>
+            <td>{{data.0}}</td>
+            <td>{{data.1}}</td>
+            <td>{{data.2}}</td>
+            <td>{{data.3}}</td>
+            <td width="40%" style="word-break:break-all;">{{data.4}}</td>
+            <td>{{data.5}}</td>
         </tr>
     {% endfor %}
 </tbody>
 </table>
 
-<!-- 표 페이지 넘기는것도 여기다 해야할것 같은데 이건 데이터 끌어오고 나서 해야할듯. 그래야 넘어갈게있 -->
 </section>
 
 
@@ -110,7 +100,7 @@
     </div>
 
     <div align="right">
-        팀 이름?
+        COVIED-19
     </div>
 </footer>
 

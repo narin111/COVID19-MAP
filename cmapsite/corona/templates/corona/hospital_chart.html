@@ -21,12 +21,13 @@
     table {
         width:80%;
         border-collapse: collapse;
+        margin: auto;
     }
     
     table td,
         table th {
             text-align: center;
-            padding: 5px;
+            padding: 15px;
             border: 1px solid lightgray;
         }
         table th{
@@ -54,18 +55,6 @@
   <a href="{% url 'chart' %}">확진자 이동경로&nbsp&nbsp&nbsp&nbsp </a>
   <a> <b><u>보건소</u></b> </a>
       
-        
-
-  <select style="position: absolute; right:0px; float:left; height: 30px; margin-right: 5px;">
-    <option value="" selected="">전체</option>
-    <option value="전주" >전주</option>
-    <option value="익산" >익산</option>
-    <option value="군산" >군산</option>
-    <option value="무안" >무안</option>
-    <option value="전주 외..." >전북지역</option>
-</select>
-
-
     </div>
 
 </header>
@@ -75,13 +64,13 @@
 <section>
     <table border="1">
         <tr>
-            <td bgcolor="efefef" rowspan="2">시군구</td>
-            <td bgcolor="efefef" colspan="3">선별진료 의료기관</td>
+            <td bgcolor="efefef" rowspan="2"><b>시군구</b></td>
+            <td bgcolor="efefef" colspan="3"><b>선별진료 의료기관</b></td>
         </tr>
         <tr>
-            <td bgcolor="efefef">의료기관명</td>
-            <td bgcolor="efefef">주소</td>
-            <td bgcolor="efefef">연락처<br>(24시간 연락가능)</td>
+            <td bgcolor="efefef"><b>의료기관명</b></td>
+            <td bgcolor="efefef"><b>주소</b></td>
+            <td bgcolor="efefef"><b>연락처<br>(24시간 연락가능)</b></td>
         </tr>
         <tr>
             <th bg rowspan="2">고창군</th>
