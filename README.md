@@ -25,22 +25,26 @@
 
 ### 지도
 
-><div>
+<div>
   <img width="700" src="https://user-images.githubusercontent.com/45174177/107139344-cd2bb200-695d-11eb-9f4a-3bae96bb68e9.png">
   <img width="700" src="https://user-images.githubusercontent.com/45174177/107139349-db79ce00-695d-11eb-9e45-c9e92cefbcb4.png">
-></div>
+</div>
 
->>- 사이트에 접속했을 때 제일 먼저 보이는 화면이다.
->>- 마커에 마우스를 올리면 보건소의 이름을 알 수 있다.
->>- 마커는 보건소 위치임을 알기 편하게 하기위해 이미지 마커를 적용하였다.
->>- 우측 상단에 보이는 지도/스카이뷰 버튼을 통해 지도의 보이는 방식을 바꿀 수 있다.      
+>- 사이트에 접속했을 때 제일 먼저 보이는 화면이다.
+>- 마커에 마우스를 올리면 보건소의 이름을 알 수 있다.
+>- 마커는 보건소 위치임을 알기 편하게 하기위해 이미지 마커를 적용하였다.
+>- 우측 상단에 보이는 지도/스카이뷰 버튼을 통해 지도의 보이는 방식을 바꿀 수 있다.      
+  
+  
   
 <div>
   <img width="800" src="https://user-images.githubusercontent.com/45174177/107139372-fa786000-695d-11eb-9c75-194d7658f2e5.png">
 </div>
 
 >- 버튼에 지도의 중심좌표을 변경하고 지도의 확대레벨을 조절하는 OnClick 이벤트를 추가하여 클릭하면 해당지역별로 자세하게 지도를 볼 수 있다.      
-    
+  
+  
+  
 <div>
   <img width="800" src="https://user-images.githubusercontent.com/45174177/107139383-1976f200-695e-11eb-8f87-ec6483fa6a38.png">
 </div>
